@@ -27,7 +27,8 @@ Additionally, users can search for songs based on keywords and filter their sear
 Both tables run on the MyISAM storage engine. The music player uses the fulltext search to implement keyword search. Full text only works on the MYISAM storage engine in mysql 5.5 <br><br>
 
 The source code is divided into modules to make further development easier and to keep the functions and classes organized.<br>
-There are 3 modules and a subfolder in the /modules folder they are<br><br>|                 	|                                                        	|
+There are 3 modules and a subfolder in the /modules folder they are<br><br>
+|                 	|                                                        	|
 |-----------------	|--------------------------------------------------------	|
 | Classes.py      	| Contains classes used by all other modules             	|
 | DB_interface.py 	| Contains functions used to retrieve data from database 	|
