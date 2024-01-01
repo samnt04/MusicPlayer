@@ -8,11 +8,11 @@ Additionally, users can search for songs based on keywords and filter their sear
 
 **Users**<br>
 +-------------+-------------+------+-----+---------+----------------+<br>
-| Field       | Type        | Null | Key | Default | Extra          |<br>
+| Field        | Type        | Null | Key | Default | Extra          |<br>
 +-------------+-------------+------+-----+---------+----------------+<br>
-| uid         | int(5)      | NO   | PRI | NULL    | auto\_increment |<br>
-| uname       | varchar(30) | NO   | UNI | NULL    |                |<br>
-| pwd         | varchar(30) | NO   |     | NULL    |                |<br>
+| uid          | int(5)      | NO   | PRI | NULL    | auto\_increment |<br>
+| uname        | varchar(30) | NO   | UNI | NULL    |                |<br>
+| pwd          | varchar(30) | NO   |     | NULL    |                |<br>
 | pref\_genres | blob        | YES  |     | NULL    |                |<br>
 | signed\_in   | int(1)      | YES  |     | 0       |                |<br>
 +-------------+-------------+------+-----+---------+----------------+<br>
