@@ -1,60 +1,60 @@
-# MusicPlayer
-
-
-The program is a Multi-user command line based music player. Users are recommended music based on their preferred genres and popularity of the song.<br>
-Additionally, users can search for songs based on keywords and filter their search by selecting genres. The songs and the user data are stored in a mysql database called ╬ô├ç├┐music╬ô├ç├û containing two tables users and songs.<br>
-
-## MYSQL tables required
-
-**Users**<br>
+#&nbspMusicPlayer<br>
+<br>
+<br>
+The&nbspprogram&nbspis&nbspa&nbspMulti-user&nbspcommand&nbspline&nbspbased&nbspmusic&nbspplayer.&nbspUsers&nbspare&nbsprecommended&nbspmusic&nbspbased&nbspon&nbsptheir&nbsppreferred&nbspgenres&nbspand&nbsppopularity&nbspof&nbspthe&nbspsong.<br>
+Additionally,&nbspusers&nbspcan&nbspsearch&nbspfor&nbspsongs&nbspbased&nbspon&nbspkeywords&nbspand&nbspfilter&nbsptheir&nbspsearch&nbspby&nbspselecting&nbspgenres.&nbspThe&nbspsongs&nbspand&nbspthe&nbspuser&nbspdata&nbspare&nbspstored&nbspin&nbspa&nbspmysql&nbspdatabase&nbspcalled&nbspmusic&nbspcontaining&nbsptwo&nbsptables&nbspusers&nbspand&nbspsongs.<br>
+<br>
+##&nbspMYSQL&nbsptables&nbsprequired<br>
+<br>
+Users<br>
 +-------------+-------------+------+-----+---------+----------------+<br>
-| Field        | Type        | Null | Key | Default | Extra          |<br>
+|&nbspField&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspType&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNull&nbsp|&nbspKey&nbsp|&nbspDefault&nbsp|&nbspExtra&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
 +-------------+-------------+------+-----+---------+----------------+<br>
-| uid          | int(5)      | NO   | PRI | NULL    | auto\_increment |<br>
-| uname        | varchar(30) | NO   | UNI | NULL    |                |<br>
-| pwd          | varchar(30) | NO   |     | NULL    |                |<br>
-| pref\_genres | blob        | YES  |     | NULL    |                |<br>
-| signed\_in   | int(1)      | YES  |     | 0       |                |<br>
+|&nbspuid&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspint(5)&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNO&nbsp&nbsp&nbsp|&nbspPRI&nbsp|&nbspNULL&nbsp&nbsp&nbsp&nbsp|&nbspauto\_increment&nbsp|<br>
+|&nbspuname&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspvarchar(30)&nbsp|&nbspNO&nbsp&nbsp&nbsp|&nbspUNI&nbsp|&nbspNULL&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbsppwd&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspvarchar(30)&nbsp|&nbspNO&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNULL&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbsppref\_genres&nbsp|&nbspblob&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspYES&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNULL&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbspsigned\_in&nbsp&nbsp&nbsp|&nbspint(1)&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspYES&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp0&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
 +-------------+-------------+------+-----+---------+----------------+<br>
-
-**Songs**<br>
+<br>
+Songs<br>
 +-----------+--------------+------+-----+---------+----------------+<br>
-| Field     | Type         | Null | Key | Default | Extra          |<br>
+|&nbspField&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspType&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNull&nbsp|&nbspKey&nbsp|&nbspDefault&nbsp|&nbspExtra&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
 +-----------+--------------+------+-----+---------+----------------+<br>
-| songid    | int(10)      | NO   | PRI | NULL    | auto\_increment |<br>
-| song\_name | varchar(100) | YES  | MUL | NULL    |                |<br>
-| genre     | varchar(100) | YES  |     | NULL    |                |<br>
-| song      | longblob     | NO   |     | NULL    |                |<br>
-| extension | varchar(5)   | NO   |     | NULL    |                |<br>
-| views     | int(10)      | YES  |     | 0       |                |<br>
+|&nbspsongid&nbsp&nbsp&nbsp&nbsp|&nbspint(10)&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNO&nbsp&nbsp&nbsp|&nbspPRI&nbsp|&nbspNULL&nbsp&nbsp&nbsp&nbsp|&nbspauto\_increment&nbsp|<br>
+|&nbspsong\_name&nbsp|&nbspvarchar(100)&nbsp|&nbspYES&nbsp&nbsp|&nbspMUL&nbsp|&nbspNULL&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbspgenre&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspvarchar(100)&nbsp|&nbspYES&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNULL&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbspsong&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsplongblob&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNO&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNULL&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbspextension&nbsp|&nbspvarchar(5)&nbsp&nbsp&nbsp|&nbspNO&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspNULL&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbspviews&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspint(10)&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspYES&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp0&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
 +-----------+--------------+------+-----+---------+----------------+<br>
-
-
-Both tables run on the MyISAM storage engine. The music player uses the fulltext search to implement keyword search. Full text only works on the MYISAM storage engine in mysql 5.5 <br><br>
-
-The source code is divided into modules to make further development easier and to keep the functions and classes organized.<br>
-There are 3 modules and a subfolder in the /modules folder they are<br><br>
-
+<br>
+<br>
+Both&nbsptables&nbsprun&nbspon&nbspthe&nbspMyISAM&nbspstorage&nbspengine.&nbspThe&nbspmusic&nbspplayer&nbspuses&nbspthe&nbspfulltext&nbspsearch&nbspto&nbspimplement&nbspkeyword&nbspsearch.&nbspFull&nbsptext&nbsponly&nbspworks&nbspon&nbspthe&nbspMYISAM&nbspstorage&nbspengine&nbspin&nbspmysql&nbsp5.5<br>
+<br>
+The&nbspsource&nbspcode&nbspis&nbspdivided&nbspinto&nbspmodules&nbspto&nbspmake&nbspfurther&nbspdevelopment&nbspeasier&nbspand&nbspto&nbspkeep&nbspthe&nbspfunctions&nbspand&nbspclasses&nbsporganized.<br>
+There&nbspare&nbsp3&nbspmodules&nbspand&nbspa&nbspsubfolder&nbspin&nbspthe&nbsp/modules&nbspfolder&nbspthey&nbspare<br>
+<br>
 +-----------------+--------------------------------------------------------+<br>
-| Classes.py      | Contains classes used by all other modules             |<br>
-| DB\_interface.py | Contains functions used to retrieve data from database |<br>
-| Interface.py    | Contains functions used to get data from the user      |<br>
-| /tmp            | Folder in which mp3 files are stored temporarily       |<br>
+|&nbspClasses.py&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspContains&nbspclasses&nbspused&nbspby&nbspall&nbspother&nbspmodules&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbspDB\_interface.py&nbsp|&nbspContains&nbspfunctions&nbspused&nbspto&nbspretrieve&nbspdata&nbspfrom&nbspdatabase&nbsp|<br>
+|&nbspInterface.py&nbsp&nbsp&nbsp&nbsp|&nbspContains&nbspfunctions&nbspused&nbspto&nbspget&nbspdata&nbspfrom&nbspthe&nbspuser&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbsp/tmp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbspFolder&nbspin&nbspwhich&nbspmp3&nbspfiles&nbspare&nbspstored&nbsptemporarily&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>
 +-----------------+--------------------------------------------------------+<br>
 <br>
-Variuous external modules are used besides the mysql-connector module<br><br>
-
-**pickle :** In order to get a binary representation of the list of the genres preferred by the user<br>
-**prettytable :** To print the songs and their other attributes in a neat tabular form<br>
-**os :** In order to delete all the files in the the /tmp folder<br>
-**Time :** Time module to keep track of time<br>
-**cursor :** Cursor to hide/show the terminal cursor<br>
-**colorama :** In order to print a progress bar indicating the progress of the song. ANSI escape codes are used, colorama is required to use ANSI escape codes in windows systems<br>
-**mutagen :** Mutagen contains the class MP3 which gets information on mp3 files used to get the duration of the song<br>
-**pygame :** Pygame╬ô├ç├ûs mixer is used to play the music<br>
-**threading :** Threading module is required to run a separate thread waiting for the user to play/pause the song<br>
-**getch :** Used to read a single character from stdin without printing it to the user. Is imported from msvcrt (access to microsoft visual c/c++ runtime library) if the operating system is windows<br><br>
-
-for more info refer to<br>
+Variuous&nbspexternal&nbspmodules&nbspare&nbspused&nbspbesides&nbspthe&nbspmysql-connector&nbspmodule<br>
+<br>
+**pickle&nbsp:&nbsp**&nbspIn&nbsporder&nbspto&nbspget&nbspa&nbspbinary&nbsprepresentation&nbspof&nbspthe&nbsplist&nbspof&nbspthe&nbspgenres&nbsppreferred&nbspby&nbspthe&nbspuser<br>
+**prettytable&nbsp:&nbsp**&nbspTo&nbspprint&nbspthe&nbspsongs&nbspand&nbsptheir&nbspother&nbspattributes&nbspin&nbspa&nbspneat&nbsptabular&nbspform<br>
+**os&nbsp:&nbsp**&nbspIn&nbsporder&nbspto&nbspdelete&nbspall&nbspthe&nbspfiles&nbspin&nbspthe&nbspthe&nbsp/tmp&nbspfolder<br>
+**Time&nbsp:&nbsp**&nbspTime&nbspmodule&nbspto&nbspkeep&nbsptrack&nbspof&nbsptime<br>
+**cursor&nbsp:&nbsp**&nbspCursor&nbspto&nbsphide/show&nbspthe&nbspterminal&nbspcursor<br>
+**colorama&nbsp:&nbsp**&nbspIn&nbsporder&nbspto&nbspprint&nbspa&nbspprogress&nbspbar&nbspindicating&nbspthe&nbspprogress&nbspof&nbspthe&nbspsong.&nbspANSI&nbspescape&nbspcodes&nbspare&nbspused,&nbspcolorama&nbspis&nbsprequired&nbspto&nbspuse&nbspANSI&nbspescape&nbspcodes&nbspin&nbspwindows&nbspsystems<br>
+**mutagen&nbsp:&nbsp**&nbspMutagen&nbspcontains&nbspthe&nbspclass&nbspMP3&nbspwhich&nbspgets&nbspinformation&nbspon&nbspmp3&nbspfiles&nbspused&nbspto&nbspget&nbspthe&nbspduration&nbspof&nbspthe&nbspsong<br>
+**pygame&nbsp:&nbsp**&nbspPygame&nbspmixer&nbspis&nbspused&nbspto&nbspplay&nbspthe&nbspmusic<br>
+**threading&nbsp:&nbsp**&nbspThreading&nbspmodule&nbspis&nbsprequired&nbspto&nbsprun&nbspa&nbspseparate&nbspthread&nbspwaiting&nbspfor&nbspthe&nbspuser&nbspto&nbspplay/pause&nbspthe&nbspsong<br>
+**getch&nbsp:&nbsp**&nbspUsed&nbspto&nbspread&nbspa&nbspsingle&nbspcharacter&nbspfrom&nbspstdin&nbspwithout&nbspprinting&nbspit&nbspto&nbspthe&nbspuser.&nbspIs&nbspimported&nbspfrom&nbspmsvcrt&nbsp(access&nbspto&nbspmicrosoft&nbspvisual&nbspc/c++&nbspruntime&nbsplibrary)&nbspif&nbspthe&nbspoperating&nbspsystem&nbspis&nbspwindows<br>
+<br>
+for&nbspmore&nbspinfo&nbsprefer&nbspto<br>
 https://shorturl.at/iEGS8<br>
 https://drive.google.com/file/d/1mHB5w00IrYe6rMObH4iJEK7TcHi0hs\_s/view<br>
