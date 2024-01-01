@@ -38,7 +38,8 @@ There are 3 modules and a subfolder in the /modules folder they are<br><br>
 <br>
 
 ## Module Required
-Variuous external modules are used besides the mysql-connector module<br><br>|                 	|                                                                                                                                                                                           	|
+Variuous external modules are used besides the mysql-connector module<br><br>
+|                 	|                                                                                                                                                                                           	|
 |-----------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | **pickle**      	| In order to get a binary representation of the list of the genres preferred by the user                                                                                                   	|
 | **prettytable** 	| To print the songs and their other attributes in a neat tabular form                                                                                                                      	|
