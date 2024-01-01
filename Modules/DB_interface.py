@@ -60,7 +60,6 @@ def extract_uid(uname, pwd):
     # get users uid given uname and pwd
     db_cursor.execute("select uid from users where uname = %s and pwd = %s", (uname, pwd))
     uid = db_cursor.fetchone()
-    print(uid)
     if uid is None:
         # if user not registered error is raised
         raise Classes.ACCESS_DENIED("Access Denied")

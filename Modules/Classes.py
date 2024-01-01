@@ -50,7 +50,6 @@ def _delete(tuple_in, index):
     _delete((1, 2, 3), [1,2]) -> (1,)
     _delete((1,2,3), None) -> (1,2,3)
     parameters: tuple [tuple], index int|None|list[int]
-    ----------
     """
     if index is None: index = []
     elif type(index) == int: index = [index]
@@ -63,7 +62,6 @@ class Table:
     """
     Class Table to deal with displaying Tables of content and choosing values from a table
     Attributes:
-    ----------
         fields : [tuple] tuple of column names
         records : list[tuple] list of records in each row
         hidden : list[int] the indexes of the columns that aren't suppossed to be printed
@@ -73,7 +71,6 @@ class Table:
         cardinality : [int] number of records in the table
         _table : [prettytable.prettytable.PrettyTable] pretty table object
     Methods:
-    -------
         __init__(self, fields, records=[], hidden=None, title=None, auto_number=True, empty_msg=""): initiates the
                                                                                                     object
         add(self, rec): adds to rec to Table object by appending to records and updating _table object
@@ -104,7 +101,8 @@ class Table:
         self.cardinality = len(records)
         self._table = prettytable.PrettyTable() # instantiating prettytable object
         self._table.set_style(prettytable.SINGLE_BORDER) # setting prettytable style
-        records = _delete(records, hidden) # hiding all hidden columns
+        records = [_delete(record, hidden) for record in records] # hiding all hidden records
+        fields = _delete(fields, hidden) # hiding all hidden fields
         # if auto numbering is enabled
         if auto_number:
             fields = ("No.",) + fields
@@ -137,7 +135,7 @@ class Table:
         Output: int|str value in the record_number row of the column field_name
         ------
         """
-        if record_number in range(1, self.cardinality):
+        if record_number in range(1, self.cardinality + 1):
             return self.records[record_number - 1][self.fields.index(field_name.title())]
         else: return
 
@@ -197,7 +195,7 @@ class Table:
             list[int|str]: values selected
         """
         print(f"choose {entity}s from table by their numbers in decreasing order of preference",
-              "\nseparated by commas like 1,2,3: ", sep="\n")
+              "separated by commas like 1,2,3: ", sep="\n")
         choices = input().strip().replace(" ", "").split(",")
         chosen_values = []
         for choice in choices:
@@ -256,16 +254,17 @@ class Timer:
     """
     Timer class to keep track of time
     Attributes:
-    ----------
         start_time : [float] time at which the Timer object was created in seconds
         offset : [float] offset from the start_time
         max_time : [float] maximum time allowed in seconds
         min_time : [float] minmum time allowed in seconds
+        paused_time: [float] time acc to Timer was paused in seconds if the timer is not currently paused value is None
     Methods:
-    --------
         __init__(self, max_time, min_time=0): initiate the Timer object
         get_time(self): gets the change in time
         add_offset(self, offset_sec): adds an offset to the time
+        pause(self): pauses the timer
+        unpause(self): unpauses the timer
     """
     def __init__(self, max_time, min_time=0):
         """
@@ -274,20 +273,36 @@ class Timer:
         ----------
             max_time : [float] maximum time allowed
             min_time : [float] minmum time allowed None
+            paused_time : [float] time acc to Timer at which timer was paused in seconds
         """
         self.start_time = time.time()
         self.offset = 0 # offset from start time
         self.max_time = max_time; self.min_time = min_time
+        self.paused_time = None
 
     def get_time(self):
         """Get time in Timer"""
-        time_out = time.time() - self.start_time + self.offset
+        if self.paused_time is not None:
+            time_out = self.paused_time - self.start_time + self.offset
+        else: 
+            time_out = time.time() - self.start_time + self.offset
         if time_out <= self.min_time:
             return self.min_time
         elif time_out >= self.max_time:
             return self.max_time
         else:
             return time_out
+
+    
+    def pause(self):
+        """Pauses the timer"""
+        self.paused_time = time.time()
+
+    def unpause(self):
+        """Unpauses the timer"""
+        if self.paused_time is not None:
+            self.offset -= time.time() - self.paused_time
+        self.paused_time = None
 
     def add_offset(self, offset_sec):
         """Add offset from start in timer"""
@@ -314,8 +329,10 @@ class MusicPlayer:
     def play_pause(self):
         """Method to play/pause the music"""
         if pygame.mixer.music.get_busy():
+            self.timer.pause()
             pygame.mixer.music.pause()
         else:
+            self.timer.unpause()
             pygame.mixer.music.unpause()
 
     def skip(self, offset):
@@ -326,6 +343,9 @@ class MusicPlayer:
             MusicPlayer.skip(1) goes forward by 1 second
             MusicPlayer.skip(-1) rewinds by 1 second
         """
+        if not pygame.mixer.music.get_busy():
+            self.timer.unpause()
+            pygame.mixer.music.unpause() 
         self.timer.add_offset(offset * self.song.duration/self.width)
         if self.timer.get_time() == 0: self.timer = Timer(max_time=self.song.duration)
         pygame.mixer.music.set_pos(self.timer.get_time())
@@ -359,7 +379,7 @@ class MusicPlayer:
             done = round(curr_time*self.width/self.song.duration); left = self.width - done
             progress_bar = f"|{'█'*done + '░'*left}|"
             msg = f"\t{formatted_time(curr_time)}{progress_bar}{self.duration_formatted}\n\n\t{self.instructions}"
-            print(msg, end="\033[A\r\033[A\r")
+            print(msg, end="\033[A\r\033[A")
         print(f"\t{self.duration_formatted}|{'█'*self.width}|{self.duration_formatted}\n\n\t{self.instructions}")
         self.event_thread.join()
         print("\n")

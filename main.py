@@ -12,7 +12,6 @@ def main_menu():
         choice = input('choice : ').strip()
         if choice == "1":
             uid = Interface.sign_in()
-            print(uid)
             if uid is not None:
                 uids.append(uid)
                 if input("do u wish to edit your preferences? (y/n) : ").strip().lower() == "y":
