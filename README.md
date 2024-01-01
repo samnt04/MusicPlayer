@@ -34,6 +34,7 @@ There are 3 modules and a subfolder in the /modules folder they are<br><br>
 | DB_interface.py 	| Contains functions used to retrieve data from database 	|
 | Interface.py    	| Contains functions used to get data from the user      	|
 | /tmp            	| Folder in which mp3 files are stored temporarily       	|
+<br>
 Variuous external modules are used besides the mysql-connector module<br><br>
 
 **pickle 			:** In order to get a binary representation of the list of the genres preferred by the user<br><br>
