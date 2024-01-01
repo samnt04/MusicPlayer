@@ -28,6 +28,7 @@ Both tables run on the MyISAM storage engine. The music player uses the fulltext
 
 The source code is divided into modules to make further development easier and to keep the functions and classes organized.<br>
 There are 3 modules and a subfolder in the /modules folder they are<br><br>
+|                       |                                                         |
 |---------------------	|--------------------------------------------------------	|
 | **Classes.py**      	| Contains classes used by all other modules             	|
 | **DB_interface.py** 	| Contains functions used to retrieve data from database 	|
