@@ -1,0 +1,9 @@
+open mysql make a database called music
+	and then execute source <file_path of music.sql>
+
+Download these packages
+	mysql-connector
+	prettytable
+	colorama
+	mutagen
+	cursor
