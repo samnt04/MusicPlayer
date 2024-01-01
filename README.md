@@ -26,6 +26,7 @@ Additionally, users can search for songs based on keywords and filter their sear
 
 Both tables run on the MyISAM storage engine. The music player uses the fulltext search to implement keyword search. Full text only works on the MYISAM storage engine in mysql 5.5 <br><br>
 
+## Source Code
 The source code is divided into modules to make further development easier and to keep the functions and classes organized.<br>
 There are 3 modules and a subfolder in the /modules folder they are<br><br>
 |                       |                                                         |
@@ -35,18 +36,21 @@ There are 3 modules and a subfolder in the /modules folder they are<br><br>
 | **Interface.py**    	| Contains functions used to get data from the user      	|
 | **/tmp**            	| Folder in which mp3 files are stored temporarily       	|
 <br>
-Variuous external modules are used besides the mysql-connector module<br><br>
 
-**pickle 			:** In order to get a binary representation of the list of the genres preferred by the user<br><br>
-**prettytable :** To print the songs and their other attributes in a neat tabular form<br><br>
-**os 					:** In order to delete all the files in the the /tmp folder<br><br>
-**Time 				:** Time module to keep track of time<br><br>
-**cursor 			:** Cursor to hide/show the terminal cursor<br><br>
-**colorama 		:** In order to print a progress bar indicating the progress of the song. ANSI escape codes are used, colorama is required to use ANSI escape codes in windows systems<br><br>
-**mutagen 		:** Mutagen contains the class MP3 which gets information on mp3 files used to get the duration of the song<br><br>
-**pygame 			:** Pygame mixer is used to play the music<br><br>
-**threading 	:** Threading module is required to run a separate thread waiting for the user to play/pause the song<br><br>
-**getch 			:** Used to read a single character from stdin without printing it to the user. Is imported from msvcrt (access to microsoft visual c/c++ runtime library) if the operating system is windows<br><br>
+## Module Required
+Variuous external modules are used besides the mysql-connector module<br><br>|                 	|                                                                                                                                                                                           	|
+|-----------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| **pickle**      	| In order to get a binary representation of the list of the genres preferred by the user                                                                                                   	|
+| **prettytable** 	| To print the songs and their other attributes in a neat tabular form                                                                                                                      	|
+| **os**          	| In order to delete all the files in the the /tmp folder                                                                                                                                   	|
+| **Time**        	| Time module to keep track of time                                                                                                                                                         	|
+| **cursor**      	| Cursor to hide/show the terminal cursor                                                                                                                                                   	|
+| **colorama**    	| In order to print a progress bar indicating the progress of the song. ANSI escape codes are used, colorama is required to use ANSI escape codes in windows systems                        	|
+| **mutagen**     	| Mutagen contains the class MP3 which gets information on mp3 files used to get the duration of the song                                                                                   	|
+| **pygame**      	| Pygame mixer is used to play the music                                                                                                                                                    	|
+| **threading**   	| Threading module is required to run a separate thread waiting for the user to play/pause the song                                                                                         	|
+| **getch**       	| Used to read a single character from stdin without printing it to the user. Is imported from msvcrt (access to microsoft visual c/c++ runtime library) if the operating system is windows 	|
+<br>
 
 for more info refer to<br>
 https://shorturl.at/iEGS8<br>
