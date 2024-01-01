@@ -16,17 +16,13 @@ Additionally, users can search for songs based on keywords and filter their sear
 | signed_in   	| int(1)      	| YES  	|     	| 0        	|                	|
 
 **Songs**<br>
-+-----------+--------------+------+-----+---------+----------------+<br>
-| Field     | Type         | Null | Key | Default | Extra          |<br>
-+-----------+--------------+------+-----+---------+----------------+<br>
-| songid    | int(10)      | NO   | PRI | NULL    | auto\_increment |<br>
-| song\_name | varchar(100) | YES  | MUL | NULL    |                |<br>
-| genre     | varchar(100) | YES  |     | NULL    |                |<br>
-| song      | longblob     | NO   |     | NULL    |                |<br>
-| extension | varchar(5)   | NO   |     | NULL    |                |<br>
-| views     | int(10)      | YES  |     | 0       |                |<br>
-+-----------+--------------+------+-----+---------+----------------+<br>
-
+| Field     	| Type         	| Null 	| Key 	| Defuault 	| Extra          	|
+|-----------	|--------------	|------	|-----	|----------	|----------------	|
+| songid    	| int(10)      	| NO   	| PRI 	| NULL     	| auto_increment 	|
+| song_name 	| varchar(100) 	| YES  	| MUL 	| NULL     	|                	|
+| genre     	| varchar(100) 	| YES  	|     	| NULL     	|                	|
+| extension 	| varchar(5)   	| NO   	|     	| NULL     	|                	|
+| views     	| int(10)      	| YES  	|     	| 0        	|                	|
 
 Both tables run on the MyISAM storage engine. The music player uses the fulltext search to implement keyword search. Full text only works on the MYISAM storage engine in mysql 5.5 <br><br>
 
