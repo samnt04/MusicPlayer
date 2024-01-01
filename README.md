@@ -37,7 +37,7 @@ There are 3 modules and a subfolder in the /modules folder they are<br><br>
 | **/tmp**            	| Folder in which mp3 files are stored temporarily       	|
 <br>
 
-## Module Required
+## Modules Required
 Variuous external modules are used besides the mysql-connector module<br><br>
 |                 	|                                                                                                                                                                                           	|
 |-----------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
